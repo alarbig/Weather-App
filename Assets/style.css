@@ -1,0 +1,53 @@
+* {
+    padding: 0;
+    margin: 0;
+}   
+.body {
+    height: 100%;
+    background-color: blue;
+    flex-shrink: 0;
+}
+
+.left-hand-side {
+    width: 250px;
+    height: 100%;
+    background-color: aquamarine;
+    padding-top: 2%;
+    flex-direction: row;
+    flex-grow: 1;
+    display: flex;
+    display: inline-block;
+    border: red solid 10px;
+}
+
+.dashboard {
+    justify-content: center;
+}
+
+.search {
+    padding: 10px;
+}
+
+.current-weather {
+    display: inline-block;
+    border: 10px solid yellow;
+    height: 100%;
+    padding-bottom: 20px;
+    margin-left: 16rem;
+}
+.card {
+    max-width: 76%;
+    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+    transition: 0.3s;
+    padding: 2px 16px;
+    
+}
+
+.row {
+    display: inline-block;
+    width: auto;
+}
+
+.placeholder {
+    display: r
+}
