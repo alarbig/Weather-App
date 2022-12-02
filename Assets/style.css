@@ -1,27 +1,33 @@
 * {
     padding: 0;
     margin: 0;
+    
 }   
 .body {
     height: 100%;
-    background-color: blue;
+    background-color: lightgray;
     flex-shrink: 0;
+    background-image: url(cloudsky.webp);
 }
 
 .left-hand-side {
     width: 250px;
     height: 100%;
-    background-color: aquamarine;
+    background-color: antiquewhite;
     padding-top: 2%;
     flex-direction: row;
     flex-grow: 1;
     display: flex;
     display: inline-block;
-    border: red solid 10px;
+    border: 2px solid black;
+    padding: 20px 20px 20px 20px;
+    margin-left: 10px;
 }
 
 .dashboard {
     justify-content: center;
+    background-color: whitesmoke;
+    
 }
 
 .search {
@@ -30,10 +36,12 @@
 
 .current-weather {
     display: inline-block;
-    border: 10px solid yellow;
+    border: 2px solid black;
     height: 100%;
-    padding-bottom: 20px;
+    padding: 20px 20px 20px 20px;
     margin-left: 16rem;
+    margin-right: 20px;
+    background-color: antiquewhite;
 }
 .card {
     max-width: 76%;
@@ -51,3 +59,28 @@
 .placeholder {
     display: r
 }
+
+#temperaturePlace {
+    font-size: larger;
+    font-weight: bold;
+}
+
+#card1 {
+    font-size: small;
+    
+}
+
+
+#dayForecast {
+    display: inline-block;
+    text-align: center;
+    padding-left: 325px;
+    padding-bottom: 10px;
+    font-weight: bold;
+}
+
+li {
+    text-align: center;
+    background-color: darkgray;
+}
+

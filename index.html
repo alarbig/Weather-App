@@ -8,9 +8,10 @@
     <link rel="stylesheet" href="./Assets/style.css">
     <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
+    
 </head>
 <body class="body">
-    <nav class="dashboard text-center p-3 mb-2 bg-info text-dark"><h1>Weather Dashboard</h1></nav>
+    <nav class="dashboard text-center p-3 mb-2 text-dark"><h1>Weather Dashboard</h1></nav>
     <div class="left-hand-side">
         <div class="search-city">Search for a city:</div>
         
@@ -20,20 +21,33 @@
         <input type="submit" value="Search" class="buttonSearch"></div>
 
         <span class="border-bottom"></span>
-        <div class="saved-results">Saved results for searching areas, even more text to see if this will fit in the area</div>
+        <div class="saved-results" id="savedWeather">Saved results for searching areas, even more text to see if this will fit in the area</div>
     </div>
     <div class="current-weather">
-        <a href="https://placeholder.com/"><img src="https://via.placeholder.com/350x150" alt="placeholder"></a>
-        <p id="tempaturePlace">This is placeholder text</p>
-        <p id="tempIcon"></p>
+        <p id="temperaturePlace">Current Temperature: </p>
+        <div id="icon">Currently:<img id="wicon" src="" alt=""></div>
+        <div id="humidity">Current humidity: </div>
+        <div id="wind">Wind Speed: </div>
+        <div id="dayForecast">The Forecast</div>
         <div class="card-group">
             <div class="card">
-              <div class="card-body" id="card1">
+              <div class="card-body">
+                <div id="icon"> <img id="cardIcon1" src="" alt=""></div>
+                <div id="cardDate1"></div>
+                <div id="card1"> High:  </div>
+                <div id="humidity1">Humidity: </div>
+                <div id="wind1">Wind Speed: </div>
+                
                 <h5 class="card-title"></h5>
               </div>
             </div>
             <div class="card">
-              <div class="card-body">
+              <div class="card-body" id="test">
+                <div id="icon"> <img id="cardIcon2" src="" alt=""></div>
+                <div id="cardDate2"></div>
+                <div id="card2"> High:  </div>
+                <div id="humidity2">Humidity: </div>
+                <div id="wind2">Wind Speed: </div>
                 <h5 class="card-title"></h5>
                 <p class="card-text"></p>
                 <p class="card-text"><small class="text-muted"></small></p>
@@ -41,30 +55,30 @@
             </div>
             <div class="card">
               <div class="card-body">
-                <h5 class="card-title">Card title</h5>
-                <p class="card-text"></p>
-                <p class="card-text"><small class="text-muted"></small></p>
+                <div id="icon"> <img id="cardIcon3" src="" alt=""></div>
+                <div id="cardDate3"></div>
+                <div id="card3"> High:  </div>
+                <div id="humidity3">Humidity: </div>
+                <div id="wind3">Wind Speed: </div>
               </div>
             </div>
             <div class="card">
                 <div class="card-body">
-                  <h5 class="card-title">Card title</h5>
-                  <p class="card-text"></p>
-                  <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
-                </div>
-              </div>
-              <div class="card">
-                <div class="card-body">
-                  <h5 class="card-title">Card title</h5>
-                  <p class="card-text"></p>
-                  <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
+                  <div id="icon"> <img id="cardIcon4" src="" alt=""></div>
+                <div id="cardDate4"></div>
+                <div id="card4"> High:  </div>
+                <div id="humidity4">Humidity: </div>
+                <div id="wind4">Wind Speed: </div>
                 </div>
               </div>
           </div>
         
     </div>
-    
-    <div class="5-day"></div>  
+    <div id="weatherData">
+
+    </div>
+
+    <!-- <div class="5-day"></div>   -->
     <script src="./Assets/Javascript/script.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-OERcA2EqjJCMA+/3y+gxIOqMEjwtxJY7qPCqsdltbNJuaOe923+mo//f6V8Qbsw3" crossorigin="anonymous"></script>
 </body>
