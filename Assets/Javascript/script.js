@@ -6,11 +6,11 @@ var textBox = $("#inputValue").val().trim();
 var tempEl = document.getElementById('tempaturePlace')
 const weatherData = $('#weatherData');
 const test = $('#test');
-
+//button is  listening for a search. Once text is entered and then the button is clicked it will first grab the latitude and longitude. 
 buttonPress.addEventListener('click', citySearch)
 
     function citySearch(textBox) {
-    event.preventDefault()
+    // event.preventDefault()
 
     var textBox = $("#inputValue").val().trim();
     var outPut = $(this).parent().attr('id')
@@ -25,6 +25,8 @@ buttonPress.addEventListener('click', citySearch)
             var lon = data[0].lon
             console.log(lat, lon)
 
+            // Once the lat and lon are grabbed they are inserted into the url and it will convert that information into imperial unit of measure. This could be changed to celsius is needed. 
+
             function getApi(){
                 var cityName = 'https://api.openweathermap.org/data/2.5/forecast?lat='+ lat+'&lon=' + lon +'&appid=78c009444386df8c11496b0a4e48dff0&units=imperial'
 
@@ -37,6 +39,7 @@ buttonPress.addEventListener('click', citySearch)
                         // const tempDay = data.list[i].main.temp;
                         // console.log(tempDay)
                         
+                        // These are the arrays for all the data that is needed to display the information. The array made it easier to select the correct day. 
 
                     var tempDay = data.list[0].main.temp
                     var tempHigh = [data.list[0].main.temp_max, data.list[8].main.temp_max, data.list[16].main.temp_max, data.list[32].main.temp_max, data.list[39].main.temp_max]
@@ -64,7 +67,7 @@ buttonPress.addEventListener('click', citySearch)
                     // div.append(para);
                     // console.log(para.toString())
 
-                    
+                    //This area is where the data is appended to the cards. All the relevant information is added here. 
 
                     temperaturePlace.append(tempDay,'°')
                     $('#wicon').attr('src', iconurl[0]);
