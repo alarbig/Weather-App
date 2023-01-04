@@ -1,4 +1,4 @@
-var buttonPress = $('.buttonSearch');
+ var buttonPress = document.querySelector('.buttonSearch')   //$('.buttonSearch');
 var userInput = $('inputValue');
 var cardName = $('.card-text');
 var fetchButton = $('fetch-button');
@@ -7,37 +7,27 @@ var tempEl = document.getElementById('tempaturePlace')
 const weatherData = $('#weatherData');
 const test = $('#test');
 
-//var requestUrl = 'http://api.openweathermap.org/data/2.5/weather?q=Denver&appid=78c009444386df8c11496b0a4e48dff0&units=imperial'
-//var requestUrl = 'https://api.openweathermap.org/data/2.5/forecast?q=Denver&appid=78c009444386df8c11496b0a4e48dff0&units=imperial'
+buttonPress.addEventListener('click', citySearch)
 
-
-
-$('.buttonSearch').on('click', function(event){
+    function citySearch(textBox) {
     event.preventDefault()
-    //getApi(textBox.value)
-    //var box = document.getElementById(inputValue).value
-    //console.log(box)
+
     var textBox = $("#inputValue").val().trim();
     var outPut = $(this).parent().attr('id')
-    console.log(textBox, outPut);
     var requestLatLong = 'http://api.openweathermap.org/geo/1.0/direct?q='+ textBox+'&limit=1&appid=78c009444386df8c11496b0a4e48dff0'
-    localStorage.setItem(outPut, textBox)
-    $('#savedWeather').val(localStorage.getItem(textBox))
-    console.log(localStorage)
-        console.log(requestLatLong)   
         fetch(requestLatLong)
         .then(function (response) {
             return response.json();
         })
         .then (function(data){
-            console.log(data)
+            // console.log(data)
             var lat = data[0].lat
             var lon = data[0].lon
             console.log(lat, lon)
 
             function getApi(){
                 var cityName = 'https://api.openweathermap.org/data/2.5/forecast?lat='+ lat+'&lon=' + lon +'&appid=78c009444386df8c11496b0a4e48dff0&units=imperial'
-                console.log(cityName)
+
                 fetch(cityName)
                 .then(function(response){
                 return response.json();
@@ -45,7 +35,7 @@ $('.buttonSearch').on('click', function(event){
                 .then(function(data){
                     // for (let i = 0; i < data.list.length; i++) {
                         // const tempDay = data.list[i].main.temp;
-                        console.log(tempDay)
+                        // console.log(tempDay)
                         
 
                     var tempDay = data.list[0].main.temp
@@ -76,32 +66,32 @@ $('.buttonSearch').on('click', function(event){
 
                     
 
-                    temperaturePlace.append(tempDay)
+                    temperaturePlace.append(tempDay,'°')
                     $('#wicon').attr('src', iconurl[0]);
                     humidity.append(humidityLevel[0]+'%');
                     wind.append(windSpeed[0]+'mph');
                     
-                    card1.append(tempHigh[1])
+                    card1.append(tempHigh[1],'°')
                     $('#cardIcon1').attr('src', iconurl[1]);
                     humidity1.append(humidityLevel[1]+'%');
                     wind1.append(windSpeed[1]+'mph');
 
-                    card2.append(tempHigh[2])
+                    card2.append(tempHigh[2],'°')
                     $('#cardIcon2').attr('src', iconurl[2]);
                     humidity2.append(humidityLevel[2]+'%');
                     wind2.append(windSpeed[2]+'mph');
                     
-                    card3.append(tempHigh[3])
+                    card3.append(tempHigh[3],'°')
                     $('#cardIcon3').attr('src', iconurl[3]);
                     humidity3.append(humidityLevel[3]+'%');
                     wind3.append(windSpeed[3]+'mph');
                     
-                    card4.append(tempHigh[4])
+                    card4.append(tempHigh[4],'°')
                     $('#cardIcon4').attr('src', iconurl[4]);
                     humidity4.append(humidityLevel[4]+'%');
                     wind4.append(windSpeed[4]+'mph');
                     
-
+                    
 
                         // const li = $('<li>')
                         // const ul = $('<ul>')
@@ -124,49 +114,46 @@ $('.buttonSearch').on('click', function(event){
                     }
                     )}
                 getApi();
+                
             }
     )
-});
+
+  
+    saveCity(textBox);           
+}
+// );
+
+// var cityArray = JSON.parse(localStorage.getItem('City Array')) || [];
+// function saveCity (city) {
+//     console.log(city,'TEST');
+    
+//     cityArray.push(city)
+//     console.log(cityArray, 'Hello!')
+//     localStorage.setItem('City Array', JSON.stringify(cityArray));
+    
+//     displayHistory(cityArray);
+// } 
+
+// $("#localSave").submit(saveCity());
+
+// function displayHistory(cityArray) {
+    
+//     //  $('.saved-results').append(cityArray); //get element by id, in global
+//     //  savedResults.innerHTML = ''
 
 
-
-// function getApi(cityName){       // = 'Denver'  this belonged with cityName=   cityName=textBox.value
-//     fetch(cityName)
-//     .then(function(response){
-//     return response.json();
-//     })
-//     .then(function(data){
-//            //console.log(data);
-//             //console.log(data.main.temp);
-//             //console.log(data.weather.description)
-//             var listItem = document.createElement('p');
-//             var listItem2 = document.createElement('p');
-//             var paragraph = document.createTextNode(' degrees')
-//             var paragraph2 = document.createTextNode(' Feels like')
-//             listItem.textContent =  data.list[1].main.temp;
-//             listItem2.textContent = data.list[0].main.feels_like;
-//             listItem.appendChild(paragraph);
-//             listItem.appendChild(paragraph2);
-//             var element = document.getElementById("card1");
-//             element.appendChild(listItem);
-//             element.appendChild(listItem2);
-
-//         tempEl.textContent = data.list[1].main.temp;
-//         fiveDay(data)
-//     })  
+//         console.log(cityArray)
+//          var newCity = document.createElement('li')
+//          newCity.setAttribute('class', 'history')
+//          newCity.innerHTML = cityArray;
+//          $('.saved-results').append(newCity);
+    
 // }
-// // fetchButton.addEventListener('click', getApi)
+// displayHistory(cityArray);
+// $(document).on('click', '.history', function(){
+//     console.log($(this).text())
+//     citySearch($(this).text())
+    
+// })
 
-
-// function fiveDay(fruitCast){
-//     console.log(fruitCast)
-//     const fruits = ["Banana", "Orange", "Apple", "Mango"];
-
-// //     // for (let i = 0; i < 4; i++) {
-// //       var count = fruits[i]
-// //       console.log(count)
-      
-        
-// //     }
-// // }
-// // fiveDay()
+// console.log(saveCity);
